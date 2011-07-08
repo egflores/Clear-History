@@ -13,7 +13,6 @@ disconnect 			Return to home computer
 scan <computer>			Get information on given computer
 crack <computer> |password|	Crack given computer's password
 decrypt <file>			Decrypt encrypted file
-exec <file> <computer>		Execute program on given computer
 download <file>			Download file to home computer
 upload <file> <computer>	Upload given file to given computer
 help 				Provides help information
