@@ -95,21 +95,61 @@ managerName = "Amitav Gutipaty" #Just so I can change it easily if I want.
 #imManager = managerName + "says: " #So I don't have to type "says:"
 
 say(0, "Hello, I'm" + managerName + ".")
-# Blah blah. Other intro stuff describing the reason you cant talk back and what your job is. I'll think of it later.
 
-# Makes you scan "Steve Waller Security Consultant".
-# Makes you crack password
-# Makes you connect to computer
-# Makes you list files
-# Makes you cat employLst.lst
-# Makes you cat mail.hist
-# Makes you decrypt employLst.lst
-# Makes you download savedFile.xtr
-# Makes you disconnect
-# Makes you upload savedFile.xtr to Amitav Gutipaty Manager
+say(0.1, "I'm sorry that I had you bring your own laptop. Your office isn't yet ready so you have to use the empty storage room for now. I have something to do so I can't come in to work today but I think we can start training with this USB flash drive with instructions. Lets Begin.")
 
-# He tells you that he screwed you and that you can't leave.
-# Print password
+say(0.1, "First, I'll teach how to connect to other computers on the network. Type 'connect' followed by the name of the computeron the network.")
+say(0, "The computers on this network are usually called 'full name employee' followed by 'position'.")
+say(0, "Now, I want you to connect to 'Steve Waller Security Consultant'")
+
+# IF TYPES IN CONNECT TO STEVE WALLER AND FAILS (WHICH IT WILL)
+say(0, "Don't worry if it's password protected. You can easily bypass it with the 'crack' command.")
+say(0, "That won't completely do all the work for you but it'll make it easier. It'll show you the amount of letters the password is along with hints of some letters containted.")
+say(0, "Just type in a letter at a time to check if it's contained in the word.")
+say(0, "Now crack the password.")
+
+# 3 TRIES. IF HE GETS IT WRONG:
+say(0, "The password is 'password'")
+# ELSE: CONTINUE
+
+say(0, "Now that the password has been entered, you can connect to it. Do so now.")
+
+# IF CURRENT COMPUTER IS STEVE WALLER: CONTINUE
+
+say(0, "To see all the files contained in the computer use the 'ls' command.")
+
+# IF LS IS USED: CONTINUE
+
+say(0, "To read files use the 'cat' command followed by the file you want to read. Try reading SteveMail.hst.")
+
+# IF CAT IS USED WITH STEVEMAIL.HST: CONTINUE
+
+say(0, "Good. Now try to decrypt emplyLst.lst by using the 'decrypt' command followed by the filename.")
+say(0, "That command brings up the jumbled keyword. The letters in the keyword are shifted by a certain number.")
+say(0, "For example 'a' shifted by -1 will be 'z'. And if shifted by 1 it will be 'b'. Its your job to find out the decryption code (the number of letters the keyword is shifted.)")
+say(0, "Use the keyword 'scan' followed the name of the computer to view its specs.")
+
+# IF EMPLYLST.LST IS DECRYPTED: CONTINUE
+
+say(0, "Good. Now I'm going to need you to retrieve the savedFragment2.ry file.")
+say(0, "Use the 'download' command followed by the filename to download any file to your computer.")
+
+# IF MYCOMPUTER CONTAINS SAVEDFRAGMENT2.RY: CONTINUE
+
+say(0, "Once you've downloaded the file, disconnect from the computer by using the 'disconnect' function.")
+
+# IF CURRENT COMPUTER IS MYCOMPUTER: CONTINUE
+
+say(0,"Now upload savedFragment2.ry to using the 'upload' command followed by the computer name you want to upload it to.")
+say(0, "Send it to 'Amitav Gutipaty Manager")
+
+# IF UPLOADED SAVEDFRAGMENT2.RY TO "AMITAV GUTIPATY MANAGER": CONTINUE
+
+say(0, "You have just given me highly classified information about the company. But since this company has a closed network I couldn't get in it through the inside computers.")
+say(0, "But with your computer I could access the internet and everything will be traced back to you. Good bye.")
+
+# FILL SCREEN WITH RANDOM LETTERS FOR A WHILE. WITH PAUSES SO THEY WILL BE ABLE TO NOTICE IT.
+clear()
 
 #====================================================================================
 # Stage 2
@@ -189,26 +229,41 @@ say(0, "Hello, I'm" + managerName + ".")
 # HaxorGurl Responses: SteveMail.hist - "A cute new employee? I wonder who she means? o_o That must be quite a fetish!"
 #					   RichardMemo.txt - "So if somebody triggers security the computers available to you are switched around? Weird. :/"
 #						ses.png - ">:/ This isn't the time for this!! @_@; poor donkey.
+#						(all fragment files) - "They seem to be numbered. Try to collect all of them together in your computer.^^"
 #=====================================================================================
 
 girlName = "HaxorGurl"
 imGirl = girlName + "says: "
 
-# HaxorGurl comes online and goes on to critizise your computer and the fact
-# that you installed David's crappy OS and the chat program that he used to eavesdrop on
-# girls that he liked. She explains that she knows you.
+say(3, girlName + " is now online.")
+say(3, imGirl + "Hey!")
+say(.2, imGirl + "its really early!")
+say(.3, imGirl + "Aren't u supposed to be @ work?! o_0")
+say(1, imGirl + "Answer me! >_<")
+say(1, imGirl + "Dats it! I'm scanning u! >:D")
+say(1, imGirl + "Ohh! you ARE at work....lol, you're using David's crappy ass OS?! It doesn't let you send messages, huh?")
+say(.4, imGirl + "You know he just used that to spy on girls' conversations...")
+say(.1, imGirl + "Anyways~")
+say(.3, imGirl + "I just read on a blog that the company you now work for just got hacked.")
+say(.5, imGirl + "The blog says that the company is not letting anybody leave until they catch the culprit.")
+say(.3, imGirl + "So far the only leads the cops have is a new employee was seen bringing a personal laptop. But they can't find him.")
+say(3, imGirl + "Wait a minute...")
+say(1, imGirl + "Thats....")
+say(.5, imGirl + "you!")
+say(.2, imGirl + "that's strange though, because this other guy is taking credit for it. But he says the cops will never find him cuz he's in hiding.")
+say(.3, imGirl + "it must be a mistake, you have to clear your name...")
+say(.5, imGirl + "look around the network for some proof before the cops find you. D:")
+say(0.1, imGirl + "If you want, you can upload files to me and I'll see if i can helps. :3")
+say(0.1, imGirl + "Just upload to 'haxorgurl'.")
+say(0.3, imGirl + "Now get to searchinnnN!!!!")
 
-# She goes on to say that a hacking blog has just posted that the company the protagonist
-# works for has just been hacked and that it seems that the way they did it was by bringing
-# another computer. She figures out its you by the blog. She states that the company has
-# ordered a lockdown so he can't leave.
-# She insists that you clear your name and find the culprit. By finding clues about the
-# culprit. Opens her computer for uploading.
+# IF BOTH SAVEDFRAGMENT0.JBY AND SAVEDFRAGMENT3.IH ARE IN MYCOMPUTER: CONTINUE
 
-# Suggests you try to connect to any computers that you connected to before.
+say(0, "SECURITY TRIGGERED")
+say(.3, "NOW TRIGGERING SECURITY MEASURES")
 
-# Download savedFragment0.xtr
-# Security will activate which fills the screen then clears it.
+# RANDOM WALL OF TEXT. WITH PAUSES SO THEY CAN SEE THE WALL GETTING LONGER.
+clear()
 
 #======================================================================================
 # Stage 3
@@ -246,8 +301,8 @@ imGirl = girlName + "says: "
 #
 #							To: Amitav Gutipaty
 #							Please refrain from using vulgar language. And both of those
-#							consultants will make less than what you make. And I will ask
-#							That you train this new recruit as well before you leave. Thanks :)
+#							consultants will make less than what you make. I will ask
+#							that you train this new recruit as well before you leave. Thanks :)
 #
 #							From: Amitav Gutipaty
 #							Oh, I'm gonna train him good alright."
@@ -261,7 +316,7 @@ imGirl = girlName + "says: "
 #	Files: AmitavMemo.txt - Encrypted(amitav, 8)
 #			"The connection: The name of the son and the job of the mother
 #			The ends of the files Encrypted by the age of the new employee will give me Passage.
-#			Once the fragments are happy together in that nest, they will gossip.
+#			Once the fragments are happy together with the son and mother, they will gossip.
 #
 # Computer: "Chris Jensen HR Manager" - Password Protected: Pheonixeon, (none)
 #	Specs: Intel i7 Extreme 8 cores @ 3.4Ghz
@@ -271,16 +326,49 @@ imGirl = girlName + "says: "
 #
 # HaxorGurl Responses: employees.lst - "Dang o_O! That Sally is quite old for a receptionist."
 #						TyrellaMail.hst - "No doubt that 'new recruit' is u, huh. :p"
-#						AmitavMemo.txt - "....Does he mean the file extensions?"
+#						AmitavMemo.txt - "....Does he mean the file extensions? I guess you have to read them in order?"
 #============================================================================================
 
-# HaxorGurl mentions the blog says that the security has been triggered. And the company will take
-# legal action with the hacker which at this time points at the protagonist.
+say(.5, imGirl + "wut was dat?! D:")
+say(.2, imGirl + "An update on that dude's blog....he says that security has been activated.")
+say(.3, imGirl + "o_o")
+say(.3, imGirl + "not")
+say(.4, imGirl + "good")
+say(.1, imGirl + "pick up the pace!")
 
-# When connected to "chris jensen hr manager"
-# If all the fragments are together
+# IF connected to "chris jensen hr manager"
+# IF all the fragments uploaded to that computer
 # Trigger a bunch of code that fills the screen
-# HaxorGurl asks for the Pandorasbox.exe file
-# When uploaded she says that she sent this info to the police and that they said that all the evidence points to amitav
-# She congratulates you and says goodbye.
-# Exit.
+# Delete all fragments
+
+say(0, imGirl + "what cause thkat/")
+say(0.2, imGirl + "caused that?")
+say(0.3, imGirl + "send the file to me")
+
+# IF uploaded pandorasBox.exe to haxorgurl: continue
+
+say(0.1, imGirl + "lets see")
+say(1, imGirl + "har harhahar har!!!")
+say(.5, imGirl + "this guy is a dummy! XD")
+say(.5, imGirl + "He wrote this from his home computer!! I was able to extract all his location information!!!")
+say(.3, imGirl + "Imma give this to the cops.")
+say(.3, imGirl + "maybe I'll get a reward for giving tips hehehe :P")
+say(.2, imGirl + "brb")
+say(10, imGirl + "urgh, they put me on hold >:C")
+say(5, imGirl + "okay hold on, they're processing.")
+say(5, imGirl + "haha they said my tip was helpfulllll ^^")
+say(.5, imGirl + "oh, Pheonixeon's website posted something!")
+say(1, imGirl + "'Thanks to an annonymous tip, the hacker has been identified as a recently laid off employee.")
+say(.4, imGirl + "Even though he just hacked through our least important and least secure network we are working our hardest to get things back to normal.'")
+say(.4, imGirl + "That was damn quick! They're not a top company for nothing...")
+say(1, imGirl + "it seems that you're off the hook! :D")
+say(.5, imGirl + "but this pandora file.....")
+say(.5, imGirl + "only contains personal converstations between employees....I guess that's all the 'least important' network contained.")
+say(.3, imGirl + "either way, congrats on your new job XD")
+say(.3, imGirl + "well, i'm off! see ya after work!")
+say(.4, imGirl + "oh...")
+say(.5, imGirl + "The guy's fetish....")
+say(1, imGirl + "is peanut butter....go figure :/")
+say(0, girlName + "is now offline.")
+
+# EXIT the game
