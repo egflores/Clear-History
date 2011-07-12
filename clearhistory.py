@@ -33,6 +33,17 @@ def clear():
 #----------------------------------------------------------------------------------
 # The start of the game. Allows the user to input a password or not.
 #----------------------------------------------------------------------------------
+clear()
+print """
+Clear History
+
+Designed by Jose Flores
+Programmed by Edgar Flores
+
+"""
+
+raw_input("Press enter to begin...")
+
 print("MyCustomOS")
 time.sleep(0.4)
 print("Loading CoreOSFiles")
@@ -43,6 +54,7 @@ say(0.3, "Error! Send function not initialized")
 say(0.1, "No friends online")
 say(0.1, "Reading from USB")
 say(0.2, "Now executing")
+time.sleep(3)
 clear()
 
 #==================================================================================
@@ -92,61 +104,104 @@ clear()
 #==================================================================================
 
 managerName = "Amitav Gutipaty" #Just so I can change it easily if I want.
-#imManager = managerName + "says: " #So I don't have to type "says:"
+imManager = managerName + "says: " #So I don't have to type "says:"
 
 say(0, "Hello, I'm" + managerName + ".")
 
-say(0.1, "I'm sorry that I had you bring your own laptop. Your office isn't yet ready so you have to use the empty storage room for now. I have something to do so I can't come in to work today but I think we can start training with this USB flash drive with instructions. Lets Begin.")
+say(0.1, imManager + "I'm sorry that I had you bring your own laptop. Your office isn't yet ready so you have to use the empty storage room for now. I have something to do so I can't come in to work today but I think we can start training with this USB flash drive with instructions. Lets Begin.\n")
+say(0.1, imManager + "First, I'll teach how to connect to other computers on the network. Type 'connect' followed by the name of the computeron the network.\n")
+say(0, imManager + "The computers on this network are usually called 'full name employee' followed by 'position'.\n")
+say(0, imManager + "Now, I want you to connect to 'Steve Waller Security Consultant'\n")
 
-say(0.1, "First, I'll teach how to connect to other computers on the network. Type 'connect' followed by the name of the computeron the network.")
-say(0, "The computers on this network are usually called 'full name employee' followed by 'position'.")
-say(0, "Now, I want you to connect to 'Steve Waller Security Consultant'")
+#######################
+raw_input("Press enter")
+#######################
 
 # IF TYPES IN CONNECT TO STEVE WALLER AND FAILS (WHICH IT WILL)
-say(0, "Don't worry if it's password protected. You can easily bypass it with the 'crack' command.")
-say(0, "That won't completely do all the work for you but it'll make it easier. It'll show you the amount of letters the password is along with hints of some letters containted.")
-say(0, "Just type in a letter at a time to check if it's contained in the word.")
-say(0, "Now crack the password.")
+say(0, imManager + "Don't worry if it's password protected. You can easily bypass it with the 'crack' command.\n")
+say(0, imManager + "That won't completely do all the work for you but it'll make it easier. It'll show you the amount of letters the password is along with hints of some letters containted.\n")
+say(0, imManager + "Just type in a letter at a time to check if it's contained in the word.\n")
+say(0, imManager + "Now crack the password.")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # 3 TRIES. IF HE GETS IT WRONG:
-say(0, "The password is 'password'")
+say(0, imManager + "The password is 'password'")
 # ELSE: CONTINUE
 
-say(0, "Now that the password has been entered, you can connect to it. Do so now.")
+#######################
+raw_input("Press enter")
+#######################
+
+say(0, imManager + "Now that the password has been entered, you can connect to it. Do so now.\n")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # IF CURRENT COMPUTER IS STEVE WALLER: CONTINUE
 
-say(0, "To see all the files contained in the computer use the 'ls' command.")
+say(0, imManager + "To see all the files contained in the computer use the 'ls' command.")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # IF LS IS USED: CONTINUE
 
-say(0, "To read files use the 'cat' command followed by the file you want to read. Try reading SteveMail.hst.")
+say(0, imManager + "To read files use the 'cat' command followed by the file you want to read. Try reading SteveMail.hst.\n")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # IF CAT IS USED WITH STEVEMAIL.HST: CONTINUE
 
-say(0, "Good. Now try to decrypt emplyLst.lst by using the 'decrypt' command followed by the filename.")
-say(0, "That command brings up the jumbled keyword. The letters in the keyword are shifted by a certain number.")
-say(0, "For example 'a' shifted by -1 will be 'z'. And if shifted by 1 it will be 'b'. Its your job to find out the decryption code (the number of letters the keyword is shifted.)")
-say(0, "Use the keyword 'scan' followed the name of the computer to view its specs.")
+say(0, imManager + "Good. Now try to decrypt emplyLst.lst by using the 'decrypt' command followed by the filename.\n")
+say(0, imManager + "That command brings up the jumbled keyword. The letters in the keyword are shifted by a certain number.\n")
+say(0, imManager + "For example 'a' shifted by -1 will be 'z'. And if shifted by 1 it will be 'b'. Its your job to find out the decryption code (the number of letters the keyword is shifted.)\n")
+say(0, imManager + "Use the keyword 'scan' followed the name of the computer to view its specs.\n")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # IF EMPLYLST.LST IS DECRYPTED: CONTINUE
 
-say(0, "Good. Now I'm going to need you to retrieve the savedFragment2.ry file.")
-say(0, "Use the 'download' command followed by the filename to download any file to your computer.")
+say(0, imManager + "Good. Now I'm going to need you to retrieve the savedFragment2.ry file.")
+say(0, imManager + "Use the 'download' command followed by the filename to download any file to your computer.\n")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # IF MYCOMPUTER CONTAINS SAVEDFRAGMENT2.RY: CONTINUE
 
-say(0, "Once you've downloaded the file, disconnect from the computer by using the 'disconnect' function.")
+say(0, imManager + "Once you've downloaded the file, disconnect from the computer by using the 'disconnect' function.\n")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # IF CURRENT COMPUTER IS MYCOMPUTER: CONTINUE
 
-say(0,"Now upload savedFragment2.ry to using the 'upload' command followed by the computer name you want to upload it to.")
-say(0, "Send it to 'Amitav Gutipaty Manager")
+say(0, imManager + "Now upload savedFragment2.ry to using the 'upload' command followed by the computer name you want to upload it to.\n")
+say(0, imManager + "Send it to 'Amitav Gutipaty Manager")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # IF UPLOADED SAVEDFRAGMENT2.RY TO "AMITAV GUTIPATY MANAGER": CONTINUE
 
-say(0, "You have just given me highly classified information about the company. But since this company has a closed network I couldn't get in it through the inside computers.")
-say(0, "But with your computer I could access the internet and everything will be traced back to you. Good bye.")
+say(0, imManager + "You have just given me highly classified information about the company. But since this company has a closed network I couldn't get in it through the inside computers.\n")
+say(0, imManager + "But with your computer I could access the internet and everything will be traced back to you. Good bye.\n")
+
+#######################
+raw_input("Press enter")
+#######################
 
 # FILL SCREEN WITH RANDOM LETTERS FOR A WHILE. WITH PAUSES SO THEY WILL BE ABLE TO NOTICE IT.
 clear()

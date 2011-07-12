@@ -1,4 +1,4 @@
-from resources import Computer, File
+from resources import *
 import Constants
 import time
 
@@ -86,13 +86,18 @@ def crack(computer_name = None, password = None):
 	else:
 		print "Please enter name of computer you wish to crack."
 
-#TODO: implement method
-def decrypt(file_name = None):
+def decrypt(file_name = None, password = None):
 	if file_name:
 		if file_name in current_computer.files:
 			if current_computer.files[file_name].encrypted == True:
-				#TODO: implement decrypt program
-				print "TODO: running decrypting file."
+				if password:
+					if current_computer.files[file_name].password == password:
+						current_computer.files[file_name].encrypted = False
+						print file_name, "decrypted, you can now access content"
+				else:
+					print "Running decrypter..."
+					time.sleep(1)
+					print "Displaying encryption keyword:", current_computer.files[file_name].encryptedPassword
 			else:
 				print file_name, "is not encrypted."
 		else:
@@ -147,9 +152,9 @@ def load_commands():
 	
 def load_computers():
 	computer_list["home"] = home_computer
-	computer_list["test"] = Computer("test", False, None)
+	computer_list["test"] = Computer("test", "", False)
 	computer_list["test"].files["test"] = File("test", "this is text", False)
-	computer_list["test"].files["test2"] = File("test2", "super secret stuff", True)
+	computer_list["test"].files["test2"] = File("test2", "super secret stuff", True, "test", -1)
 	computer_list["test2"] = Computer("test2", True, "password")
 
 def load_stage():
