@@ -51,6 +51,9 @@ def connect(name = None):
 		print "No address given, try again.."
 	
 def disconnect():
+	if current_computer == home_computer:
+		print "Can't disconnect from home computer."
+		return
 	global current_computer
 	current_computer = home_computer
 	print "Disconnecting..."
@@ -67,7 +70,6 @@ def scan(computer_name = None):
 	else:
 		print "Enter name of computer you wish to scan."
 
-#TODO: Integrate cracking method
 def crack(computer_name = None, password = None):
 	if computer_name:
 		if computer_name in computer_list:
@@ -76,9 +78,10 @@ def crack(computer_name = None, password = None):
 					if computer_list[computer_name].password == password:
 						computer_list[computer_name].protected = False
 						print "Access granted, you can now connect."
+					else:
+						print "Access denied."
 				else:
-					#TODO: write cracking method
-					print "Initializing cracking protocol..."
+					computer_list[computer_name].crack()
 			else:
 				print computer_name, "does not need to be cracked."
 		else:
@@ -97,7 +100,7 @@ def decrypt(file_name = None, password = None):
 				else:
 					print "Running decrypter..."
 					time.sleep(1)
-					print "Displaying encryption keyword:", current_computer.files[file_name].encryptedPassword
+					print "Displaying encryption keyword:", current_computer.files[file_name].encrypted_password
 			else:
 				print file_name, "is not encrypted."
 		else:
@@ -155,7 +158,7 @@ def load_computers():
 	computer_list["test"] = Computer("test", "", False)
 	computer_list["test"].files["test"] = File("test", "this is text", False)
 	computer_list["test"].files["test2"] = File("test2", "super secret stuff", True, "test", -1)
-	computer_list["test2"] = Computer("test2", True, "password")
+	computer_list["test2"] = Computer("test2", "", True, "password", ['s', 'w'], 3)
 
 def load_stage():
 	load_computers()
@@ -177,10 +180,10 @@ def cmd():
 					return command
 				else:
 					print "Too many parameters, re-enter command."
-					return None
+					return command
 			else:
 				print command[0], "is not a valid command"
-				return None
+				return command
 		else:
 			return None
 			
