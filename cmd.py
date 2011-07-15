@@ -1,10 +1,9 @@
 from resources import *
-import Constants
 import time
 
 # Public variables
 command_list = {};
-home_computer = Computer("home", False, None)
+home_computer = Home_Computer
 current_computer = home_computer
 computer_list = {}
 
@@ -51,20 +50,19 @@ def connect(name = None):
 		print "No address given, try again.."
 	
 def disconnect():
+	global current_computer
 	if current_computer == home_computer:
 		print "Can't disconnect from home computer."
 		return
-	global current_computer
 	current_computer = home_computer
 	print "Disconnecting..."
 	time.sleep(2)
 	print "Disconnected."
 
-#TODO: display computer's specs
 def scan(computer_name = None):
 	if computer_name:
 		if computer_name in computer_list:
-			print "Displaying %s's specs" % computer_name
+			print computer_list[computer_name].specs
 		else:
 			print computer_name, "does not exist or is not connected."
 	else:
@@ -154,11 +152,8 @@ def load_commands():
 	command_list["help"] = help
 	
 def load_computers():
-	computer_list["home"] = home_computer
-	computer_list["test"] = Computer("test", "", False)
-	computer_list["test"].files["test"] = File("test", "this is text", False)
-	computer_list["test"].files["test2"] = File("test2", "super secret stuff", True, "test", -1)
-	computer_list["test2"] = Computer("test2", "", True, "password", ['s', 'w'], 3)
+	global computer_list
+	computer_list = load_stage1_computers()
 
 def load_stage():
 	load_computers()
