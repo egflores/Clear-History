@@ -1,5 +1,6 @@
 import time
 import os
+from cmd import *
 
 #Persistant (Global?) variables
 #Computer "My Computer"
@@ -49,6 +50,7 @@ say(1.1, "Reading from USB")
 say(1.2, "Now executing Training Program")
 time.sleep(3)
 clear()
+load_commands()
 
 #==================================================================================
 # Stage 1
@@ -58,43 +60,9 @@ clear()
 # The protagonist is just starting his new job as a security consultant.
 # He enters an empty room. He then inserts a USB flash drive into his computer as
 # he was instructed by his manager over the phone.
-#----------------------------------------------------------------------------------
-#
-# Computer:"Steve Waller Security Consultant" - Password Protected: password, sword
-#    Specs:"Intel i7 Extreme 8 cores @ 3.4 GHz
-#           RAM: 8GB
-#           OS: Windows8"
-#    Files: savedFragment2.ry - Encrypted(really long random text, no hints)
-#			employLst.lst - Encrypted(password, 8) - "Sally Stark
-#							Steve Waller
-#							Richard Moliere
-#							Tyrella Jensen"
-#			SteveMail.hist - "From: Sally Stark
-#						Hey, do you remember the encryption code for our employee
-#						files?
-#						
-#						To: Sally Stark
-#						Why do you want to know? And hey, how about dinner tonight?
-#
-#						From: Sally Stark
-#						I told you, Steve! We're over! Now just tell me the code!!
-#
-#						To: Sally Stark
-#						It's against policy to say! You're a receptionist! why the
-#						hell would you want to know the code?! Only Security Consultants
-#						would want to know that.
-#
-#						From: Sally Stark
-#						It's to help a cute new employee! He forgot it and I want to look smart so
-#						I can ride him!! Cuz i know he'll be better than you!! Now
-#						if you don't tell me I'LL TELL EVERYONE ABOUT YOUR FETISH!!
-#
-#						To: Sally Stark
-#						FUUUCK! OKay bitch! I can't tell you directly but its the
-#						amount of RAM on your computer. Its on the sticker on your
-#						computer you dumb bitch.
-#						P.S. I hope he gives you the aids."
 #==================================================================================
+
+load_stage_1()
 
 managerName = "Amitav Gutipaty" #Just so I can change it easily if I want.
 imManager = managerName + "says: " #So I don't have to type "says:"
@@ -104,92 +72,63 @@ say(0, "Hello, I'm " + managerName + ".")
 say(0.1, "I'm sorry that I had you bring your own laptop. Your office isn't yet ready so you have to use the empty storage room for now. I have something to do so I can't come in to work today but I think we can start training with this USB flash drive with instructions. Lets Begin.\n")
 say(0.1, "First, I'll teach how to connect to other computers on the network. Type 'connect' followed by the name of the computeron the network.\n")
 say(0,  "The computers on this network are usually called 'full name employee' followed by 'position'.\n")
-say(0, "Now, I want you to connect to 'Steve Waller Security Consultant'\n")
+say(0, "Now, I want you to connect to 'Steve_Waller_Security_Consultant' (case-sensitive)\n")
 
-#######################
-raw_input("Press enter")
-#######################
+while True:
+	if cmd() == ["connect", "Steve_Waller_Security_Consultant"] : break
 
-# IF TYPES IN CONNECT TO STEVE WALLER AND FAILS (WHICH IT WILL)
-say(0, "Don't worry if it's password protected. You can easily bypass it with the 'crack' command.\n")
+say(0, "\nDon't worry if it's password protected. You can easily bypass it with the 'crack' command.\n")
 say(0, "That won't completely do all the work for you but it'll make it easier. It'll show you the amount of letters the password is along with hints of some letters containted.\n")
 say(0, "Just type in a letter at a time to check if it's contained in the word.\n")
 say(0, "Now crack the password.")
 
-#######################
-raw_input("Press enter")
-#######################
+while True:
+	if cmd() == ["crack", "Steve_Waller_Security_Consultant", "password"]: break
 
-# 3 TRIES. IF HE GETS IT WRONG:
-say(0, "The password is 'password'")
-# ELSE: CONTINUE
 
-#######################
-raw_input("Press enter")
-#######################
+say(0, "\nNow that the password has been entered, you can connect to it. Do so now.\n")
+	
+while True:
+	if cmd() == ["connect", "Steve_Waller_Security_Consultant"] : break
 
-say(0, "Now that the password has been entered, you can connect to it. Do so now.\n")
+say(0, "\nTo see all the files contained in the computer use the 'ls' command.\n")
 
-#######################
-raw_input("Press enter")
-#######################
+while True:
+	if cmd() == ["ls"]: break
 
-# IF CURRENT COMPUTER IS STEVE WALLER: CONTINUE
+say(0, "\nTo read files use the 'cat' command followed by the file you want to read. Try reading SteveMail.hist.\n")
 
-say(0, "To see all the files contained in the computer use the 'ls' command.")
+while True:
+	if cmd() == ["cat", "SteveMail.hist"]: break
 
-#######################
-raw_input("Press enter")
-#######################
-
-# IF LS IS USED: CONTINUE
-
-say(0, "To read files use the 'cat' command followed by the file you want to read. Try reading SteveMail.hst.\n")
-
-#######################
-raw_input("Press enter")
-#######################
-
-# IF CAT IS USED WITH STEVEMAIL.HST: CONTINUE
-
-say(0, "Good. Now try to decrypt emplyLst.lst by using the 'decrypt' command followed by the filename.\n")
+say(0, "Good. Now try to decrypt employLst.lst by using the 'decrypt' command followed by the filename.\n")
 say(0, "That command brings up the jumbled keyword. The letters in the keyword are shifted by a certain number.\n")
 say(0, "For example 'a' shifted by -1 will be 'z'. And if shifted by 1 it will be 'b'. Its your job to find out the decryption code (the number of letters the keyword is shifted.)\n")
 say(0, "Use the keyword 'scan' followed the name of the computer to view its specs.\n")
 
-#######################
-raw_input("Press enter")
-#######################
+while True:
+	if cmd() == ["decrypt", "employLst.lst", "password"]: break
 
-# IF EMPLYLST.LST IS DECRYPTED: CONTINUE
-
-say(0, "Good. Now I'm going to need you to retrieve the savedFragment2.ry file.")
+say(0, "\nGood. Now I'm going to need you to retrieve the savedFragment2.ry file.")
 say(0, "Use the 'download' command followed by the filename to download any file to your computer.\n")
 
-#######################
-raw_input("Press enter")
-#######################
+while True:
+	cmd()
+	if "savedFragment2.ry" in home_computer.files: break
 
-# IF MYCOMPUTER CONTAINS SAVEDFRAGMENT2.RY: CONTINUE
+say(0, "\nOnce you've downloaded the file, disconnect from the computer by using the 'disconnect' function.\n")
 
-say(0, "Once you've downloaded the file, disconnect from the computer by using the 'disconnect' function.\n")
+while True:
+	cmd()
+	if current_computer == home_computer: break
 
-#######################
-raw_input("Press enter")
-#######################
+say(0, "\nNow upload savedFragment2.ry to using the 'upload' command followed by the computer name you want to upload it to.\n")
+say(0, "Send it to 'Amitav Gutipaty Manager'\n")
 
-# IF CURRENT COMPUTER IS MYCOMPUTER: CONTINUE
+while True:
+	if cmd() == ["upload", "savedFragment2.ry", "Amitav_Gutipaty_Manager"]: break
 
-say(0, "Now upload savedFragment2.ry to using the 'upload' command followed by the computer name you want to upload it to.\n")
-say(0, "Send it to 'Amitav Gutipaty Manager'")
-
-#######################
-raw_input("Press enter")
-#######################
-
-# IF UPLOADED SAVEDFRAGMENT2.RY TO "AMITAV GUTIPATY MANAGER": CONTINUE
-
-say(0, "You have just given me highly classified information about the company. But since this company has a closed network I couldn't get in it through the inside computers.\n")
+say(0, "\nYou have just given me highly classified information about the company. But since this company has a closed network I couldn't get in it through the inside computers.\n")
 say(0, "But with your computer I could access the internet and everything will be traced back to you. Good bye.\n")
 
 #######################
@@ -204,76 +143,6 @@ clear()
 #------------------------------------------------------------------------------------
 # The protagonist has just been told that he's been had.
 #------------------------------------------------------------------------------------
-# Computer:"Steve Waller Security Consultant"
-#
-# Computer:"Sally Stark Receptionist" 
-#	Specs: Intel i7 Extreme 8 cores @ 3.4Ghz
-#		   RAM: 8GB
-#		   OS: Windows8
-#	Files: savedFragment3.ih - Encrypted(really long random text, no hints)
-#			presentEmploy.lst - "Present Employees:
-#							Sally Stark
-#							Steve Waller
-#							Amitav Gutipaty
-#							Richard Moliere
-#							Tyrella Jensen"
-#			SallyMail.hist - Encrypted(sally, 8) - "From: Tyrella Jensen
-#						 Hey, Sal. I need a big favor from you! I need to take my
-#						 kid to the doctor. Could you clock me in anyway? Appreciate it.
-#						 
-#						 To: Tyrella Jensen
-#						 No problem, I hope he gets better because I know you love your little boy.
-#						
-#						 To: Richard Moliere
-#						 Remember me? It's Sally, the receptionist. I just wanted to say
-#						 that I found out the code for you. It's 8.
-#
-#						 From: Richard Moliere
-#						 Thank you so much, ma'am. You are a life saver. It would be
-#						 so embarrassing to ask for such important information from my
-#						 boss. Especially right after he just told me. So, thanks again.
-#
-#						 To: Richard Moliere
-#						 No problem. And what's with the ma'am stuff? Just call me Sally."
-#						 
-#						 From: Richard Moliere
-#						 Haha okay Sally. The code you gave me worked for most of the files
-#						 except for one. I don't know what the file does, I'll ask my boss."
-#
-# Computer: "Richard Moliere Security Consultant"
-#	Specs: Intel i7 Extreme 8 cores @ 3.4Ghz
-#		   RAM: 8GB
-#		   OS: Windows8
-#	Files: savedFragment0.jby - Encrypted(long random, no hints)
-#			RichardMail.hist - Encrypted(password, 8)
-#						"To: Amitav Gutipaty
-#						 I'm sorry to disturb you but I have a file here sitting on my computer.
-#						 I can't open it with our current encryption code. Do you know how to
-#						 decrypt it?
-#
-#						 From: Amitav Gutipaty
-#						 No.
-#
-#						 To: Amitav Gutipaty
-#						 So, do I just leave it alone?
-#
-#						 From: Amitav Gutipaty
-#						 Yes."
-#			RichardMemo.txt - Encrypted(gingerbread, 8)
-#						"Things to remember:
-#						1. The decryption code for our files is 8.
-#						But when security is comprimised it turns into the opposite plus the ram contained.
-#						Then the network will re-arrange itself. Which means some computers will not be hooked up.
-#						But some others will.
-#						
-#						2. I was told not to mess that wierd savedFragment file.
-#						
-#						3. Call Sally by her first name...even though she's like 20 years older than me.
-#						
-#						4. Our HR Manager really loves her little boy. His name is Chris.
-#
-#						5. Don't fuck this up."
-#
 # HaxorGurl Responses: SteveMail.hist - "A cute new employee? I wonder who she means? o_o That must be quite a fetish!"
 #					   RichardMemo.txt - "So if somebody triggers security the computers available to you are switched around? Weird. :/"
 #						ses.png - ">:/ This isn't the time for this!! @_@; poor donkey.
@@ -319,60 +188,6 @@ clear()
 #--------------------------------------------------------------------------------------
 # Security was just triggered which means all the computers were switched.
 #--------------------------------------------------------------------------------------
-# Computers: "Richard Moliere Security Consultant"
-#
-# Computer: "Tyrella Jensen HR Manager" - Password Protected: Chris, cs
-#	Specs: Intel i7 Extreme 8 cores @ 3.4Ghz
-#		   RAM: 4GB
-#		   OS: Windows8
-#	Files: employees.lst - Encrypted(Christopher, -4)
-#							"Sally Stark
-#							 Age: 40
-#							 Receptionist
-#							 
-#							 Steve Waller
-#							 Age: 33
-#							 Security Consultant
-#
-#			TyrellaMail.hst - Encrypted(CrissyBoo, -4)
-#							"To: Amitav Gutipaty
-#							 We're were very honored to have you work for us. But as a
-#							 result of the recent economy we have no choice but to let
-#							 you go. We wish you luck and you should recieve your final
-#							 check by the end of the week. Thank you.
-#
-#							From: Amitav Gutipaty
-#							What?! Bullshit!!!! if the whole shit about the economy is
-#							true, then you wouldn't be hiring more motherfucking security
-#							consultants! I just trained that stupid little jerk-off and
-#							now you're firing me? FUCk you! and all your shit. I'm gonna
-#							go work for Google....fuck you and Pheonixeon.
-#
-#							To: Amitav Gutipaty
-#							Please refrain from using vulgar language. And both of those
-#							consultants will make less than what you make. I will ask
-#							that you train this new recruit as well before you leave. Thanks :)
-#
-#							From: Amitav Gutipaty
-#							Oh, I'm gonna train him good alright."
-#
-#			savedFragment1.ihc - Encrypted(really long random text, no hints)
-#
-# Computer: "Amitav Gutipaty Manager" - Password Protected: Google, o
-#	Specs: Intel i7 Extreme 8 cores @ 3.4Ghz
-#		   RAM: 16GB
-#		   OS: Windows8
-#	Files: AmitavMemo.txt - Encrypted(amitav, 8)
-#			"The connection: The name of the son and the job of the mother
-#			The ends of the files Encrypted by the age of the new employee will give me Passage.
-#			Once the fragments are happy together with the son and mother, they will gossip.
-#
-# Computer: "Chris Jensen HR Manager" - Password Protected: Pheonixeon, (none)
-#	Specs: Intel i7 Extreme 8 cores @ 3.4Ghz
-#		   RAM: 4GB
-#		   OS: Windows8
-#	Files: pandorasBox.exe - "Unable to read"
-#
 # HaxorGurl Responses: employees.lst - "Dang o_O! That Sally is quite old for a receptionist."
 #						TyrellaMail.hst - "No doubt that 'new recruit' is u, huh. :p"
 #						AmitavMemo.txt - "....Does he mean the file extensions? I guess you have to read them in order?"

@@ -6,6 +6,7 @@ command_list = {};
 home_computer = Home_Computer
 current_computer = home_computer
 computer_list = {}
+success_flag = False
 
 # This function displays the the files to the user
 def ls():
@@ -79,7 +80,8 @@ def crack(computer_name = None, password = None):
 					else:
 						print "Access denied."
 				else:
-					computer_list[computer_name].crack()
+					global success_flag
+					success_flag = computer_list[computer_name].crack()
 			else:
 				print computer_name, "does not need to be cracked."
 		else:
@@ -151,13 +153,17 @@ def load_commands():
 	command_list["upload"] = upload
 	command_list["help"] = help
 	
-def load_computers():
+def load_stage_1():
 	global computer_list
 	computer_list = load_stage1_computers()
-
-def load_stage():
-	load_computers()
-	load_commands()
+	
+def load_stage_2():
+	global computer_list
+	computer_list = load_stage2_computers()
+	
+def load_stage_3():
+	global computer_list
+	computer_list = load_stage3_computers()
 	
 def cmd():
 	while True:
@@ -181,11 +187,3 @@ def cmd():
 				return command
 		else:
 			return None
-			
-def play():
-	load_stage()
-	while (True):
-		command = cmd()
-		if command == None: return
-	
-play()

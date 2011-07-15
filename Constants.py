@@ -35,6 +35,7 @@ OS: Windows8
 """
 
 Steve_Mail = """
+------------------------------------------------------------
 From: Sally Stark
 Hey, do you remember the encryption code for our employee
 files?
@@ -60,6 +61,7 @@ FUUUCK! OKay bitch! I can't tell you directly but its the
 amount of RAM on your computer. Its on the sticker on your
 computer you dumb bitch.
 P.S. I hope he gives you the AIDS.
+-----------------------------------------------------------
 """
 
 Sally_Stark_Receptionist = """

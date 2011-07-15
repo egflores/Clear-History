@@ -49,7 +49,7 @@ class Computer(object):
 				self.protected_password = protect_password(self.password, self.hints)
 				if not '_' in self.protected_password:
 					print "The password for %s is %s" % (self.name, self.password)
-					return
+					return True
 			elif guess in incorrect_guesses:
 				print "Already attempted that character."
 				time.sleep(1)
@@ -58,6 +58,7 @@ class Computer(object):
 				current_tries = current_tries + 1
 				incorrect_guesses.append(guess)
 		print "Too many incorrect guesses, reseting..."
+		return False
 		
 def encrypt(text, shift = 1):
 	if text:
