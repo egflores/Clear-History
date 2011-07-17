@@ -1,13 +1,44 @@
 from resources import *
 import time
+import random
+import os
 
 # Public variables
-command_list = {};
+command_list = {}
 home_computer = Home_Computer
 current_computer = home_computer
 computer_list = {}
 success_flag = False
 
+#----------------------------------------------------------------------------------
+# im(numOfSecToWait, stringToPrint)
+#	So I don't have to keep typing time.sleep()
+# ---------------------------------------------------------------------------------
+def say(num, str):
+	time.sleep(num)
+	print(str)
+
+#----------------------------------------------------------------------------------
+# Clears the console
+#----------------------------------------------------------------------------------
+def clear():
+	os.system(['clear', 'cls'][os.name=='nt'])
+
+def random_line():
+	characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'l', 'm', 'n', 'o', 
+				'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', 
+				'4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', 
+				'*', '(', ')', ',', '.', ';', '[', ']', '{', '}', ':', '"', '<', '>', 
+				'?']
+	line = ""
+	for i in range(78):
+		line += characters[random.randint(0, len(characters) - 1)] 
+	return line
+	
+def fill_screen():
+	for i in range(10000):
+		print random_line()
+	
 # This function displays the the files to the user
 def ls():
 	if current_computer.files:
@@ -17,6 +48,7 @@ def ls():
 				print file, "(encrypted)"
 			else:
 				print file
+		print "\n"
 	else:
 		print "No files."
 	
@@ -82,6 +114,9 @@ def crack(computer_name = None, password = None):
 				else:
 					global success_flag
 					success_flag = computer_list[computer_name].crack()
+					if success_flag == True:
+						computer_list[computer_name].protected = False
+						print "Access granted, you can now connect."
 			else:
 				print computer_name, "does not need to be cracked."
 		else:
@@ -125,11 +160,16 @@ def upload(file_name = None, computer_name = None):
 	if file_name and computer_name:
 		if file_name in home_computer.files:
 			if computer_name in computer_list:
-				print "Transfering %s to %s..." % (file_name, computer_name)
-				computer_list[computer_name].files[file_name] = home_computer.files[file_name]
-				del home_computer.files[file_name]
-				time.sleep(1)
-				print "Transfer complete."
+				if computer_list[computer_name].protected == False:
+					print "Transfering %s to %s..." % (file_name, computer_name)
+					computer_list[computer_name].files[file_name] = home_computer.files[file_name]
+					del home_computer.files[file_name]
+					time.sleep(1)
+					print "Transfer complete."
+				else:
+					print "Cannot upload file, %s is protected." % computer_name
+			elif computer_name == "haxorgurl":
+				Haxor_Gurl(file_name)
 			else:
 				print computer_name, "does not exist or is not connected."
 		else:
@@ -161,9 +201,13 @@ def load_stage_2():
 	global computer_list
 	computer_list = load_stage2_computers()
 	
-def load_stage_3():
+def load_stage_3_1():
 	global computer_list
 	computer_list = load_stage3_computers()
+	
+def load_stage_3_2():
+	global computer_list
+	computer_list["Chris_Jensen_HR_Manager"].files = Chris_Jensen_Files()
 	
 def cmd():
 	while True:

@@ -3,6 +3,20 @@ file_header = """
 Files:
 -------"""
 
+Haxor_Gurl_Responses = { "SteveMail.hist" : "A cute new employee? I wonder who she means? o_o That must be quite a fetish!", 
+						"RichardMemo.txt" : "So if somebody triggers security the computers available to you are switched around? Weird. :/",
+						"ses.png" : ">:/ This isn't the time for this!! @_@; poor donkey.",
+						"employees.lst" : "Dang o_O! That Sally is quite old for a receptionist.",
+						"TyrellaMail.hst" : "No doubt that 'new recruit' is u, huh. :p",
+						"AmitavMemo.txt" : "....Does he mean the file extensions? I guess you have to read them in order?",
+						"savedFragment0.jby" : "They seem to be numbered. Try to collect all of them together in your computer.^^",
+						"savedFragment1.ihc" : "They seem to be numbered. Try to collect all of them together in your computer.^^",
+						"savedFragment2.ry" : "They seem to be numbered. Try to collect all of them together in your computer.^^",
+						"savedFragment3.ih" : "They seem to be numbered. Try to collect all of them together in your computer.^^",
+						"pandorasBox.exe" : "Thnx ^_^"}
+						
+Haxor_Random_Responses = ["I don't know what to tell you.", "I don't know what this is.", "I dunno what this is. :(", "Sorry, I can't help you with this.", "You're on your on on this one. :)"]
+
 # This string is shows when the user enters 'help' command
 help = """
 <> = required, || = optional

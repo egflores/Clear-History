@@ -1,5 +1,14 @@
 import time
 import Constants
+import random
+
+def Haxor_Gurl(file_name):
+	if file_name:
+		if file_name in Constants.Haxor_Gurl_Responses:
+			print "HaxorGurl says: ", Constants.Haxor_Gurl_Responses[file_name]
+		else:
+			print "HaxorGurl says: ", Constants.Haxor_Random_Responses[random.randint(0, 4)]
+			
 
 def protect_password(password, hints):
 		result = ""
@@ -109,7 +118,7 @@ def Steve_Waller_Files():
 	
 def load_stage1_computers():
 	global comp_list
-	Steve_Waller_Security_Consultant = Computer("Steve_Waller_Security_Consultant", Constants.Steve_Waller_Security_Consultant, True, "password", "sword", 3)
+	Steve_Waller_Security_Consultant = Computer("Steve_Waller_Security_Consultant", Constants.Steve_Waller_Security_Consultant, True, "password", "sword", 10)
 	Steve_Waller_Security_Consultant.files = Steve_Waller_Files()
 	comp_list["Steve_Waller_Security_Consultant"] = Steve_Waller_Security_Consultant
 	return comp_list
@@ -131,7 +140,7 @@ def Richard_Moliere_Files():
 	richard_mail = File("RichardMail.hist", Constants.Richard_Mail, True, "password", 8)
 	files["RichardMail.hist"] = richard_mail
 	richard_memo = File("RichardMemo.txt", Constants.Richard_Memo, True, "gingerbread", 8)
-	files["RichardMemo.txt"] = richard_mem0
+	files["RichardMemo.txt"] = richard_memo
 	return files
 	
 def load_stage2_computers():
@@ -177,6 +186,5 @@ def load_stage3_computers():
 	Amitav_Gutipaty_Manager.files = Amitav_Gutipaty_Files()
 	comp_list["Amitav_Gutipaty_Manager"] = Amitav_Gutipaty_Manager
 	Chris_Jensen_HR_Manager = Computer("Chris_Jensen_HR_Manager", Constants.Chris_Jensen_HR_Manager, "pheonixeon", "", 3)
-	Chris_Jensen_HR_Manager.files = Chris_Jensen_Files()
 	comp_list["Chris_Jensen_HR_Manager"] = Chris_Jensen_HR_Manager
 	return comp_list

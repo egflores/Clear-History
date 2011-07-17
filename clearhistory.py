@@ -1,38 +1,8 @@
 import time
-import os
 from cmd import *
-
-#Persistant (Global?) variables
-#Computer "My Computer"
-#   Specs:"Intel Celeron D @ 1.3 Ghz
-#          RAM: 256 MB 
-#          OS: MyCustomOS"
-#   Files:"CoreOSFiles.bndl - Unable to read file.
-#		   coreImgFiles.bndl - Unable to read file.
-#		   coreScript.bndl - Unable to read file.
-#		   sesCrk.txt - Pandora's (i is sqrt of: ?)
-#          ses.png - Encrypted(box, -1) - 256kb image file retrieved from (http://www.elcachondo.net/"
-#		   errorLog.txt - "Damn send function, I'll write it later, not like I need it to evesdrop on conversations..."
-#
-#currentComputer = currently logged on computer.
-#currentStage = currently loaded stage.
-
-#----------------------------------------------------------------------------------
-# im(numOfSecToWait, stringToPrint)
-#	So I don't have to keep typing time.sleep()
-# ---------------------------------------------------------------------------------
-def say(num, str):
-	time.sleep(num)
-	print(str)
 	
 #----------------------------------------------------------------------------------
-# Clears the console
-#----------------------------------------------------------------------------------
-def clear():
-	os.system(['clear', 'cls'][os.name=='nt'])
-
-#----------------------------------------------------------------------------------
-# The start of the game. Allows the user to input a password or not.
+# Intro
 #----------------------------------------------------------------------------------
 clear()
 
@@ -65,89 +35,92 @@ load_commands()
 load_stage_1()
 
 managerName = "Amitav Gutipaty" #Just so I can change it easily if I want.
-imManager = managerName + "says: " #So I don't have to type "says:"
 
-say(0, "Hello, I'm " + managerName + ".")
+say(0, "Hello, I'm " + managerName + ".\n")
 
-say(0.1, "I'm sorry that I had you bring your own laptop. Your office isn't yet ready so you have to use the empty storage room for now. I have something to do so I can't come in to work today but I think we can start training with this USB flash drive with instructions. Lets Begin.\n")
-say(0.1, "First, I'll teach how to connect to other computers on the network. Type 'connect' followed by the name of the computeron the network.\n")
-say(0,  "The computers on this network are usually called 'full name employee' followed by 'position'.\n")
-say(0, "Now, I want you to connect to 'Steve_Waller_Security_Consultant' (case-sensitive)\n")
+say(1, "I'm sorry that I had you bring your own laptop.\nYour office isn't yet ready so you have to use the empty storage room for now.\nI have something to do so I can't come in to work today\nbut I think we can start training with this USB flash drive with instructions.\nLets Begin.\n")
+say(1, "First, I'll teach you how to connect to other computers on the network.\nType 'connect The name of the computer'.\n")
+say(1,  "The computers on this network are usually called 'full name of the employee'\n followed by their 'job'.\n")
+say(1, "The names don't have any spaces, only underscores.")
+say(1, "Now, I want you to connect to 'Steve_Waller_Security_Consultant'\nIt's case-sensitive so be sure to remember.\n")
 
-while True:
-	if cmd() == ["connect", "Steve_Waller_Security_Consultant"] : break
-
-say(0, "\nDon't worry if it's password protected. You can easily bypass it with the 'crack' command.\n")
-say(0, "That won't completely do all the work for you but it'll make it easier. It'll show you the amount of letters the password is along with hints of some letters containted.\n")
-say(0, "Just type in a letter at a time to check if it's contained in the word.\n")
-say(0, "Now crack the password.")
+say(2, "\nMost of the time.\n The computers will be password protected.\nYou can easily bypass it with the 'crack' command.\n")
+say(1, "That won't completely do all the work for you but it'll make it easier.\nIt'll show you the amount of letters the password is along with hints \nof some letters contained.\n")
+say(1, "Just type in a letter at a time to check if it's contained in the word.\nKind of like 'Hangman'\n")
+say(1, "Now crack the password.")
+say(1, "type: crack Steve_Waller_Security_Consultant")
 
 while True:
-	if cmd() == ["crack", "Steve_Waller_Security_Consultant", "password"]: break
+	if cmd() == ["crack", "Steve_Waller_Security_Consultant"] : break
 
-
-say(0, "\nNow that the password has been entered, you can connect to it. Do so now.\n")
+say(1, "\nNow that the password has been entered, you can connect to it.\n")
+say(1, "You type it in this format: connect (name_of_computer)\nNow connect to Steve_Waller_Security_Consultant")
 	
 while True:
 	if cmd() == ["connect", "Steve_Waller_Security_Consultant"] : break
 
-say(0, "\nTo see all the files contained in the computer use the 'ls' command.\n")
+say(1, "\nTo see all the files contained in the computer use the 'ls' command.\n")
+say(1, "type: ls")
 
 while True:
 	if cmd() == ["ls"]: break
 
-say(0, "\nTo read files use the 'cat' command followed by the file you want to read. Try reading SteveMail.hist.\n")
+say(1, "\nTo read files use the 'cat' command\nfollowed by the file you want to read.\n")
+say(1, "In this format: cat (name_of_file)\nTry reading SteveMail.hist.\n")
 
 while True:
 	if cmd() == ["cat", "SteveMail.hist"]: break
 
-say(0, "Good. Now try to decrypt employLst.lst by using the 'decrypt' command followed by the filename.\n")
-say(0, "That command brings up the jumbled keyword. The letters in the keyword are shifted by a certain number.\n")
-say(0, "For example 'a' shifted by -1 will be 'z'. And if shifted by 1 it will be 'b'. Its your job to find out the decryption code (the number of letters the keyword is shifted.)\n")
-say(0, "Use the keyword 'scan' followed the name of the computer to view its specs.\n")
+say(1.5, "Good. Now try to decrypt employLst.lst by using the 'decrypt' command\nfollowed by the filename and password(if you have it).\n")
+say(1, "That command brings up the jumbled keyword.\nThe letters in the keyword are shifted by a certain number.\n")
+say(1, "For example 'a' shifted by -1 will be 'z'.\nAnd if 'a' is shifted by 1 it will be 'b'.\nIts your job to find out the decryption code\n(the number of letters the keyword is shifted by.)\n")
+say(1, "You can use the keyword 'scan' followed the name of the computer to view its specs.\n")
+say(1, "In this format to reveal the jumbled word: decrypt (filename)\n")
+say(1, "In this format to enter the password: decrypt (filename) (Password)\n")
+say(1, "Type this to see the specs: scan (Name_Of_Computer)\n")
+say(1, "Now decrypt employLst.lst")
 
 while True:
 	if cmd() == ["decrypt", "employLst.lst", "password"]: break
 
-say(0, "\nGood. Now I'm going to need you to retrieve the savedFragment2.ry file.")
-say(0, "Use the 'download' command followed by the filename to download any file to your computer.\n")
+say(1, "\nGood. Now I'm going to need you to retrieve all the files from the computer.")
+say(1, "Use the 'download' command followed by the filename\nto download any file to your computer.\n")
+say(1, "Like this: download (filename)")
 
 while True:
 	cmd()
-	if "savedFragment2.ry" in home_computer.files: break
+	if "savedFragment2.ry"in home_computer.files and "SteveMail.hist" in home_computer.files and "employLst.lst" in home_computer.files: break
 
-say(0, "\nOnce you've downloaded the file, disconnect from the computer by using the 'disconnect' function.\n")
+say(1, "\nOnce you've downloaded the file,\ndisconnect from the computer by using the 'disconnect' function.\n")
+say(1, "Format: disconnect (Name_Of_Computer)")
 
 while True:
 	cmd()
 	if current_computer == home_computer: break
 
-say(0, "\nNow upload savedFragment2.ry to using the 'upload' command followed by the computer name you want to upload it to.\n")
-say(0, "Send it to 'Amitav Gutipaty Manager'\n")
+say(1, "\nNow upload savedFragment2.ry to using the 'upload' command\nfollowed by the fileame you want to upload, then the computer name.\n")
+say(1, "Format: upload (filename) (Name_Of_Computer)")
+say(0, "Send it to 'Amitav_Gutipaty_Manager'\n")
 
 while True:
 	if cmd() == ["upload", "savedFragment2.ry", "Amitav_Gutipaty_Manager"]: break
 
-say(0, "\nYou have just given me highly classified information about the company. But since this company has a closed network I couldn't get in it through the inside computers.\n")
-say(0, "But with your computer I could access the internet and everything will be traced back to you. Good bye.\n")
+say(2, "\nYou have just given me highly classified information about the company.\nBut since this company has a closed network I couldn't get in it through the inside computers.\n")
+say(1, "But with your computer I could access the internet\nand everything will be traced back to you.\n")
+say(5, "Good Bye")
+say(14, "")
 
-#######################
-raw_input("Press enter")
-#######################
+fill_screen()
 
-# FILL SCREEN WITH RANDOM LETTERS FOR A WHILE. WITH PAUSES SO THEY WILL BE ABLE TO NOTICE IT.
 clear()
 
 #====================================================================================
 # Stage 2
 #------------------------------------------------------------------------------------
 # The protagonist has just been told that he's been had.
-#------------------------------------------------------------------------------------
-# HaxorGurl Responses: SteveMail.hist - "A cute new employee? I wonder who she means? o_o That must be quite a fetish!"
-#					   RichardMemo.txt - "So if somebody triggers security the computers available to you are switched around? Weird. :/"
-#						ses.png - ">:/ This isn't the time for this!! @_@; poor donkey.
-#						(all fragment files) - "They seem to be numbered. Try to collect all of them together in your computer.^^"
 #=====================================================================================
+
+load_stage_2()
 
 girlName = "HaxorGurl"
 imGirl = girlName + " says: "
@@ -158,63 +131,86 @@ say(2, imGirl + "its really early!")
 say(3, imGirl + "Aren't u supposed to be @ work?! o_0")
 say(2, imGirl + "Answer me! >_<")
 say(4, imGirl + "Dats it! I'm scanning u! >:D")
-say(5, imGirl + "Ohh! you ARE at work....lol, you're using David's crappy ass OS?! It doesn't let you send messages, huh?")
+say(5, imGirl + "Ohh! you ARE at work....")
+say(3.8, imGirl + "lol, you're using David's crappy ass OS?!")
+say(2.3, imGirl + "It doesn't let you send messages, huh?")
 say(2.4, imGirl + "You know he just used that to spy on girls' conversations...")
 say(2.1, imGirl + "Anyways~")
-say(3.3, imGirl + "I just read on a blog that the company you now work for just got hacked.")
-say(3.5, imGirl + "The blog says that the company is not letting anybody leave until they catch the culprit.")
-say(3.3, imGirl + "So far the only leads the cops have is a new employee was seen bringing a personal laptop. But they can't find him.")
+say(3.3, imGirl + "I just read on a blog..")
+say(3.5, imGirl + "that the company you now work for just got hacked.")
+say(3.5, imGirl + "The blog says that the company is not letting anybody leave")
+say(2.3, imGirl + "until they catch the culprit.")
+say(3.3, imGirl + "So far the only leads the cops have is a new employee")
+say(5, imGirl + "was seen bringing a personal laptop. But they can't find him.")
 say(3, imGirl + "Wait a minute...")
 say(1, imGirl + "Thats....")
-say(1.5, imGirl + "you!")
-say(4.2, imGirl + "that's strange though, because this other guy is taking credit for it. But he says the cops will never find him cuz he's in hiding.")
+say(6, imGirl + "you!")
+say(4.2, imGirl + "that's strange though,")
+say(3.2, imGirl + "because this other guy is taking credit for it.")
+say(2, imGirl + "But he says the cops will never find him cuz he's in hiding.")
 say(3.3, imGirl + "it must be a mistake, you have to clear your name...")
-say(3.5, imGirl + "look around the network for some proof before the cops find you. D:")
-say(3.1, imGirl + "If you want, you can upload files to me and I'll see if i can helps. :3")
+say(3.5, imGirl + "look around the network for some proof!")
+say(3.2, imGirl + "before the cops find you. D:")
+say(3.1, imGirl + "If you want,")
+say(5, imGirl + "you can upload files to me and I'll see if i can helps. :3")
 say(2.1, imGirl + "Just upload to 'haxorgurl'.")
-say(2.1, imGirl + "Don't worry, I'll give you the files back.")
-say(2.3, imGirl + "Now get to searchinnnN!!!!")
+say(4.1, imGirl + "Don't worry, I'll give you the files back")
+say(6.1, imGirl + "A word to the wise...")
+say(4, imGirl + "Download anything that might be useful later")
+say(3, imGirl + "Try connecting to some computers on the network...")
+say(5.3, imGirl + "Now get to searchinnnN!!!!")
 
-# IF BOTH SAVEDFRAGMENT0.JBY AND SAVEDFRAGMENT3.IH ARE IN MYCOMPUTER: CONTINUE
+while True:
+	cmd()
+	if "savedFragment3.ih" in home_computer.files and "savedFragment0.jby" in home_computer.files: break
 
 say(3, "SECURITY TRIGGERED")
 say(3.3, "NOW TRIGGERING SECURITY MEASURES")
 
-# RANDOM WALL OF TEXT. WITH PAUSES SO THEY CAN SEE THE WALL GETTING LONGER.
+fill_screen()
+
 clear()
 
 #======================================================================================
 # Stage 3
 #--------------------------------------------------------------------------------------
 # Security was just triggered which means all the computers were switched.
-#--------------------------------------------------------------------------------------
-# HaxorGurl Responses: employees.lst - "Dang o_O! That Sally is quite old for a receptionist."
-#						TyrellaMail.hst - "No doubt that 'new recruit' is u, huh. :p"
-#						AmitavMemo.txt - "....Does he mean the file extensions? I guess you have to read them in order?"
 #============================================================================================
 
+load_stage_3_1()
+
 say(1.5, imGirl + "wut was dat?! D:")
-say(2.2, imGirl + "An update on that dude's blog....he says that security has been activated.")
+say(2.2, imGirl + "An update on that dude's blog...")
+say(3, imGirl + "he says that security\nhas been activated.")
 say(2.3, imGirl + "o_o")
-say(1.3, imGirl + "not")
-say(1.4, imGirl + "good")
+say(6, imGirl + "not")
+say(6, imGirl + "good")
 say(2.1, imGirl + "pick up the pace!")
 
-# IF connected to "chris jensen hr manager"
-# IF all the fragments uploaded to that computer
-# Trigger a bunch of code that fills the screen
-# Delete all fragments
+while True:
+	cmd()
+	if current_computer.name == "Chris_Jensen_HR_Manager": break
+	
+while True:
+	cmd()
+	if "savedFragment0.jby" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment1.ihc" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment2.ry" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment3.ih" in computer_list["Chris_Jensen_HR_Manager"].files: break
 
-say(0, imGirl + "what cause thkat/")
+fill_screen()
+
+load_stage_3_1()
+
+say(1, imGirl + "what cause thkat/")
 say(2.2, imGirl + "caused that?")
 say(2.3, imGirl + "send the file to me")
 
-# IF uploaded pandorasBox.exe to haxorgurl: continue
+while True:
+	if cmd() == ["upload", "pandorasBox.exe", "haxorgurl"]: break
 
 say(1.1, imGirl + "lets see")
 say(1, imGirl + "har harhahar har!!!")
 say(2.5, imGirl + "this guy is a dummy! XD")
-say(2.5, imGirl + "He wrote this from his home computer!! I was able to extract all his location information!!!")
+say(2.5, imGirl + "He wrote this from his home computer!!")
+say(3, imGirl + "I was able to extract all his location information!!!")
 say(2.3, imGirl + "Imma give this to the cops.")
 say(2.3, imGirl + "maybe I'll get a reward for giving tips hehehe :P")
 say(1.2, imGirl + "brb")
@@ -222,12 +218,17 @@ say(10, imGirl + "urgh, they put me on hold >:C")
 say(5, imGirl + "okay hold on, they're processing.")
 say(5, imGirl + "haha they said my tip was helpfulllll ^^")
 say(2.5, imGirl + "oh, Pheonixeon's website posted something!")
-say(3, imGirl + "'Thanks to an annonymous tip, the hacker has been identified as a recently laid off employee.")
-say(5, imGirl + "Even though he just hacked through our least important and least secure network we are working our hardest to get things back to normal.'")
-say(4, imGirl + "That was damn quick! They're not a top company for nothing...")
+say(3, imGirl + "'Thanks to an anonymous tip,")
+say(3, imGirl + "the hacker has been identified as a recently laid off employee.")
+say(5, imGirl + "Even though he just hacked through our least important")
+say(3, imGirl + "and least secure network we are working our hardest to get things")
+say(2, imGirl + "back to normal.'")
+say(4, imGirl + "That was damn quick!")
+say(3, imGirl + "They're not a top company for nothing...")
 say(1, imGirl + "it seems that you're off the hook! :D")
 say(2.5, imGirl + "but this pandora file.....")
-say(2.5, imGirl + "only contains personal converstations between employees....I guess that's all the 'least important' network contained.")
+say(2.5, imGirl + "only contains personal conversations between employees...")
+say(5, imGirl + "I guess that's all the 'least important' network contained.")
 say(2.3, imGirl + "either way, congrats on your new job XD")
 say(2.3, imGirl + "well, i'm off! see ya after work!")
 say(1.4, imGirl + "oh...")
