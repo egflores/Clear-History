@@ -104,11 +104,12 @@ def Home_Computer_Files():
 
 Home_Computer = Computer("My_Computer", Constants.home_computer, False)
 Home_Computer.files = Home_Computer_Files()
-comp_list = {}
+current_computer = Home_Computer
+computer_list = {}
 		
 def Steve_Waller_Files():
 	files = {}
-	saved_fragment = File("savedFragment2.ry", "N/A", True, "lakjdlirvioej", 1)
+	saved_fragment = File("savedFragment2.ry", "N/A", True, "lakjdhgfnhkjfbhfhfyghkfjujutrrfrtyujrturgtttygreeetryerlirvioej", 1)
 	files["savedFragment2.ry"] = saved_fragment
 	employ_list = File("employLst.lst", "Sally Stark\nSteve Waller\nRichard Moliere\nTyrella Jense\n", True, "password", 8)
 	files["employLst.lst"] = employ_list
@@ -117,15 +118,15 @@ def Steve_Waller_Files():
 	return files
 	
 def load_stage1_computers():
-	global comp_list
+	global computer_list
 	Steve_Waller_Security_Consultant = Computer("Steve_Waller_Security_Consultant", Constants.Steve_Waller_Security_Consultant, True, "password", "sword", 10)
 	Steve_Waller_Security_Consultant.files = Steve_Waller_Files()
-	comp_list["Steve_Waller_Security_Consultant"] = Steve_Waller_Security_Consultant
-	return comp_list
+	computer_list["Steve_Waller_Security_Consultant"] = Steve_Waller_Security_Consultant
+	return computer_list
 
 def Sally_Stark_Files():
 	files = {}
-	saved_fragment_3 = File("savedFragment3.ih", "N/A", True, "asdfjklroigjoidfj", 1)
+	saved_fragment_3 = File("savedFragment3.ih", "N/A", True, "asdfjklroidgthjrgtyt464tyer5rgyhrdrfk7yte3wegfgtfktryjrjrt6gjoidfj", 1)
 	files["savedFragment3.ih"] = saved_fragment_3
 	present_employ = File("presentEmploy.lst", "Present Employees:\nSally Stark\nSteve Waller\nAmitav Gutipaty\nRichard Moliere\nTyrella Jensen", False)
 	files["presentEmploy.lst"] = present_employ
@@ -135,7 +136,7 @@ def Sally_Stark_Files():
 
 def Richard_Moliere_Files():
 	files = {}
-	saved_fragment_0 = File("savedFragment0.jby", "N/A", True, "skjdfirni", 1)
+	saved_fragment_0 = File("savedFragment0.jby", "N/A", True, "skjdoidfuvhjerujri473kijtduyhjt58eujfie498e490odeie490we9odeirni", 1)
 	files["savedFragment0.jby"] = saved_fragment_0
 	richard_mail = File("RichardMail.hist", Constants.Richard_Mail, True, "password", 8)
 	files["RichardMail.hist"] = richard_mail
@@ -144,22 +145,22 @@ def Richard_Moliere_Files():
 	return files
 	
 def load_stage2_computers():
-	global comp_list
+	global computer_list
 	Sally_Stark_Receptionist = Computer("Sally_Stark_Receptionist", Constants.Sally_Stark_Receptionist, False)
 	Sally_Stark_Receptionist.files = Sally_Stark_Files()
-	comp_list["Sally_Stark_Receptionist"] = Sally_Stark_Receptionist
+	computer_list["Sally_Stark_Receptionist"] = Sally_Stark_Receptionist
 	Richard_Moliere_Security_Consultant = Computer("Richard_Moliere_Security_Consultant", Constants.Richard_Moliere_Security_Consultant, False)
 	Richard_Moliere_Security_Consultant.files = Richard_Moliere_Files()
-	comp_list["Richard_Moliere_Security_Consultant"] = Richard_Moliere_Security_Consultant
-	return comp_list
+	computer_list["Richard_Moliere_Security_Consultant"] = Richard_Moliere_Security_Consultant
+	return computer_list
 
 def Tyrella_Jensen_Files():
 	files = {}
 	employees = File("employees.lst", "Sally Stark\nAge: 40\n Receptionist\n\nSteve Waller\nAge: 33\nSecurity Consultant", True, "christopher", -4)
 	files["employees.lst"] = employees
-	tyrella_mail = File("TyrellaMail.hst", Constants.Tyrella_Mail, True, "crissyboo", -4)
-	files["TyrellaMail.hst"] = tyrella_mail
-	saved_fragment_1 = File("savedFragment1.ihc", "N/A", True, "irimcieds", 1)
+	tyrella_mail = File("TyrellaMail.hist", Constants.Tyrella_Mail, True, "crissyboo", -4)
+	files["TyrellaMail.hist"] = tyrella_mail
+	saved_fragment_1 = File("savedFragment1.ihc", "N/A", True, "irimckjrmey5uih598ersuhig54uierfsuih4t7eskus7ie8i4hvuhs4ihswiuhoisgrieds", 1)
 	files["savedFragment1.ihc"] = saved_fragment_1
 	return files
 
@@ -172,19 +173,19 @@ def Amitav_Gutipaty_Files():
 def Chris_Jensen_Files():
 	files = {}
 	pandoras_box = File("pandorasBox.exe", "Unable to read", False)
-	files["pandorasBox.exe"] = pantoras_box
+	files["pandorasBox.exe"] = pandoras_box
 	return files
 	
 def load_stage3_computers():
-	global comp_list
-	del comp_list["Steve_Waller_Security_Consultant"]
-	del comp_list["Sally_Stark_Receptionist"]
+	global computer_list
+	del computer_list["Steve_Waller_Security_Consultant"]
+	del computer_list["Sally_Stark_Receptionist"]
 	Tyrella_Jensen_HR_Manager = Computer("Tyrella_Jensen_HR_Manager", Constants.Tyrella_Jensen_HR_Manager, True, "chris", "cs", 3)
 	Tyrella_Jensen_HR_Manager.files = Tyrella_Jensen_Files()
-	comp_list["Tyrella_Jensen_HR_Manager"] = Tyrella_Jensen_HR_Manager
-	Amitav_Gutipaty_Manager = Computer("Amitav_Gutipaty_Manager", Amitav_Gutipaty_Manager, True, "google", "o", 3)
+	computer_list["Tyrella_Jensen_HR_Manager"] = Tyrella_Jensen_HR_Manager
+	Amitav_Gutipaty_Manager = Computer("Amitav_Gutipaty_Manager", Constants.Amitav_Gutipaty_Manager, True, "google", "o", 3)
 	Amitav_Gutipaty_Manager.files = Amitav_Gutipaty_Files()
-	comp_list["Amitav_Gutipaty_Manager"] = Amitav_Gutipaty_Manager
-	Chris_Jensen_HR_Manager = Computer("Chris_Jensen_HR_Manager", Constants.Chris_Jensen_HR_Manager, "pheonixeon", "", 3)
-	comp_list["Chris_Jensen_HR_Manager"] = Chris_Jensen_HR_Manager
-	return comp_list
+	computer_list["Amitav_Gutipaty_Manager"] = Amitav_Gutipaty_Manager
+	Chris_Jensen_HR_Manager = Computer("Chris_Jensen_HR_Manager", Constants.Chris_Jensen_HR_Manager, True, "pheonixeon", "", 3)
+	computer_list["Chris_Jensen_HR_Manager"] = Chris_Jensen_HR_Manager
+	return computer_list

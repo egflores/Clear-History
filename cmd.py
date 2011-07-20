@@ -5,9 +5,6 @@ import os
 
 # Public variables
 command_list = {}
-home_computer = Home_Computer
-current_computer = home_computer
-computer_list = {}
 success_flag = False
 
 #----------------------------------------------------------------------------------
@@ -84,10 +81,10 @@ def connect(name = None):
 	
 def disconnect():
 	global current_computer
-	if current_computer == home_computer:
+	if current_computer == Home_Computer:
 		print "Can't disconnect from home computer."
 		return
-	current_computer = home_computer
+	current_computer = Home_Computer
 	print "Disconnecting..."
 	time.sleep(2)
 	print "Disconnected."
@@ -147,7 +144,7 @@ def download(file_name = None):
 	if file_name:
 		if file_name in current_computer.files:
 			print "Downloading %s..." % file_name
-			home_computer.files[file_name] = current_computer.files[file_name]
+			Home_Computer.files[file_name] = current_computer.files[file_name]
 			del current_computer.files[file_name]
 			time.sleep(1)
 			print "Transfer complete."
@@ -158,12 +155,12 @@ def download(file_name = None):
 
 def upload(file_name = None, computer_name = None):
 	if file_name and computer_name:
-		if file_name in home_computer.files:
+		if file_name in Home_Computer.files:
 			if computer_name in computer_list:
 				if computer_list[computer_name].protected == False:
 					print "Transfering %s to %s..." % (file_name, computer_name)
-					computer_list[computer_name].files[file_name] = home_computer.files[file_name]
-					del home_computer.files[file_name]
+					computer_list[computer_name].files[file_name] = Home_Computer.files[file_name]
+					del Home_Computer.files[file_name]
 					time.sleep(1)
 					print "Transfer complete."
 				else:
@@ -215,14 +212,26 @@ def cmd():
 		if command:
 			if command[0] in command_list:
 				if len(command) == 1:
-					command_list[command[0]]()
-					return command
+					try:
+						command_list[command[0]]()
+					except:
+						pass
+					else:
+						return command
 				elif len(command) == 2:
-					command_list[command[0]](command[1])
-					return command
+					try:
+						command_list[command[0]](command[1])
+					except:
+						print "Too many arguments given"
+					else:
+						return command
 				elif len(command) == 3:
-					command_list[command[0]](command[1], command[2])
-					return command
+					try:
+						command_list[command[0]](command[1], command[2])
+					except:
+						print "Too many arguments given."
+					else:
+						return command
 				else:
 					print "Too many parameters, re-enter command."
 					return command
@@ -231,3 +240,6 @@ def cmd():
 				return command
 		else:
 			return None
+			
+def final_conditions():
+	return "savedFragment0.jby" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment1.ihc" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment2.ry" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment3.ih" in computer_list["Chris_Jensen_HR_Manager"].files

@@ -39,28 +39,39 @@ managerName = "Amitav Gutipaty" #Just so I can change it easily if I want.
 say(0, "Hello, I'm " + managerName + ".\n")
 
 say(1, "I'm sorry that I had you bring your own laptop.\nYour office isn't yet ready so you have to use the empty storage room for now.\nI have something to do so I can't come in to work today\nbut I think we can start training with this USB flash drive with instructions.\nLets Begin.\n")
+
+raw_input("Press Enter to Continue")
+
 say(1, "First, I'll teach you how to connect to other computers on the network.\nType 'connect The name of the computer'.\n")
 say(1,  "The computers on this network are usually called 'full name of the employee'\n followed by their 'job'.\n")
-say(1, "The names don't have any spaces, only underscores.")
+say(1, "The names don't have any spaces, only underscores.\n")
+
+raw_input("Press Enter to Continue")
+
 say(1, "Now, I want you to connect to 'Steve_Waller_Security_Consultant'\nIt's case-sensitive so be sure to remember.\n")
+
+raw_input("Press Enter to Continue")
 
 say(2, "\nMost of the time.\n The computers will be password protected.\nYou can easily bypass it with the 'crack' command.\n")
 say(1, "That won't completely do all the work for you but it'll make it easier.\nIt'll show you the amount of letters the password is along with hints \nof some letters contained.\n")
+
+raw_input("Press Enter to Continue")
+
 say(1, "Just type in a letter at a time to check if it's contained in the word.\nKind of like 'Hangman'\n")
 say(1, "Now crack the password.")
-say(1, "type: crack Steve_Waller_Security_Consultant")
+say(1, "type: crack Steve_Waller_Security_Consultant\n")
 
 while True:
 	if cmd() == ["crack", "Steve_Waller_Security_Consultant"] : break
 
 say(1, "\nNow that the password has been entered, you can connect to it.\n")
-say(1, "You type it in this format: connect (name_of_computer)\nNow connect to Steve_Waller_Security_Consultant")
+say(1, "You type it in this format: connect (name_of_computer)\nNow connect to Steve_Waller_Security_Consultant\n")
 	
 while True:
 	if cmd() == ["connect", "Steve_Waller_Security_Consultant"] : break
 
 say(1, "\nTo see all the files contained in the computer use the 'ls' command.\n")
-say(1, "type: ls")
+say(1, "type: ls\n")
 
 while True:
 	if cmd() == ["ls"]: break
@@ -73,30 +84,35 @@ while True:
 
 say(1.5, "Good. Now try to decrypt employLst.lst by using the 'decrypt' command\nfollowed by the filename and password(if you have it).\n")
 say(1, "That command brings up the jumbled keyword.\nThe letters in the keyword are shifted by a certain number.\n")
+
+raw_input("Press Enter to Continue")
+
 say(1, "For example 'a' shifted by -1 will be 'z'.\nAnd if 'a' is shifted by 1 it will be 'b'.\nIts your job to find out the decryption code\n(the number of letters the keyword is shifted by.)\n")
+
+raw_input("Press Enter to Continue")
+
 say(1, "You can use the keyword 'scan' followed the name of the computer to view its specs.\n")
 say(1, "In this format to reveal the jumbled word: decrypt (filename)\n")
 say(1, "In this format to enter the password: decrypt (filename) (Password)\n")
 say(1, "Type this to see the specs: scan (Name_Of_Computer)\n")
-say(1, "Now decrypt employLst.lst")
+say(1, "Now decrypt employLst.lst\n")
 
 while True:
 	if cmd() == ["decrypt", "employLst.lst", "password"]: break
 
 say(1, "\nGood. Now I'm going to need you to retrieve all the files from the computer.")
 say(1, "Use the 'download' command followed by the filename\nto download any file to your computer.\n")
-say(1, "Like this: download (filename)")
+say(1, "Like this: download (filename)\n")
 
 while True:
 	cmd()
-	if "savedFragment2.ry"in home_computer.files and "SteveMail.hist" in home_computer.files and "employLst.lst" in home_computer.files: break
+	if "savedFragment2.ry"in Home_Computer.files and "SteveMail.hist" in Home_Computer.files and "employLst.lst" in Home_Computer.files: break
 
 say(1, "\nOnce you've downloaded the file,\ndisconnect from the computer by using the 'disconnect' function.\n")
-say(1, "Format: disconnect (Name_Of_Computer)")
+say(1, "Format: disconnect\n")
 
 while True:
-	cmd()
-	if current_computer == home_computer: break
+	if cmd() == ["disconnect"] : break
 
 say(1, "\nNow upload savedFragment2.ry to using the 'upload' command\nfollowed by the fileame you want to upload, then the computer name.\n")
 say(1, "Format: upload (filename) (Name_Of_Computer)")
@@ -108,7 +124,7 @@ while True:
 say(2, "\nYou have just given me highly classified information about the company.\nBut since this company has a closed network I couldn't get in it through the inside computers.\n")
 say(1, "But with your computer I could access the internet\nand everything will be traced back to you.\n")
 say(5, "Good Bye")
-say(14, "")
+say(9, "")
 
 fill_screen()
 
@@ -162,7 +178,7 @@ say(5.3, imGirl + "Now get to searchinnnN!!!!")
 
 while True:
 	cmd()
-	if "savedFragment3.ih" in home_computer.files and "savedFragment0.jby" in home_computer.files: break
+	if "savedFragment3.ih" in Home_Computer.files and "savedFragment0.jby" in Home_Computer.files: break
 
 say(3, "SECURITY TRIGGERED")
 say(3.3, "NOW TRIGGERING SECURITY MEASURES")
@@ -186,18 +202,16 @@ say(2.3, imGirl + "o_o")
 say(6, imGirl + "not")
 say(6, imGirl + "good")
 say(2.1, imGirl + "pick up the pace!")
-
-while True:
-	cmd()
-	if current_computer.name == "Chris_Jensen_HR_Manager": break
 	
 while True:
 	cmd()
-	if "savedFragment0.jby" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment1.ihc" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment2.ry" in computer_list["Chris_Jensen_HR_Manager"].files and "savedFragment3.ih" in computer_list["Chris_Jensen_HR_Manager"].files: break
+	if final_conditions() == True: break
 
 fill_screen()
 
-load_stage_3_1()
+clear()
+
+load_stage_3_2()
 
 say(1, imGirl + "what cause thkat/")
 say(2.2, imGirl + "caused that?")
