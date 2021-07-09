@@ -6,7 +6,7 @@ from cmd import *
 #----------------------------------------------------------------------------------
 clear()
 
-raw_input("Press enter to begin...")
+input("Press enter to begin...")
 
 print("MyCustomOS")
 time.sleep(0.4)
@@ -40,22 +40,22 @@ say(0, "Hello, I'm " + managerName + ".\n")
 
 say(1, "I'm sorry that I had you bring your own laptop.\nYour office isn't yet ready so you have to use the empty storage room for now.\nI have something to do so I can't come in to work today\nbut I think we can start training with this USB flash drive with instructions.\nLets Begin.\n")
 
-raw_input("Press Enter to Continue")
+input("Press Enter to Continue")
 
 say(1, "First, I'll teach you how to connect to other computers on the network.\nType 'connect The name of the computer'.\n")
 say(1,  "The computers on this network are usually called 'full name of the employee'\n followed by their 'job'.\n")
 say(1, "The names don't have any spaces, only underscores.\n")
 
-raw_input("Press Enter to Continue")
+input("Press Enter to Continue")
 
 say(1, "Now, I want you to connect to 'Steve_Waller_Security_Consultant'\nIt's case-sensitive so be sure to remember.\n")
 
-raw_input("Press Enter to Continue")
+input("Press Enter to Continue")
 
 say(2, "\nMost of the time.\n The computers will be password protected.\nYou can easily bypass it with the 'crack' command.\n")
 say(1, "That won't completely do all the work for you but it'll make it easier.\nIt'll show you the amount of letters the password is along with hints \nof some letters contained.\n")
 
-raw_input("Press Enter to Continue")
+input("Press Enter to Continue")
 
 say(1, "Just type in a letter at a time to check if it's contained in the word.\nKind of like 'Hangman'\n")
 say(1, "Now crack the password.")
@@ -85,11 +85,11 @@ while True:
 say(1.5, "Good. Now try to decrypt employLst.lst by using the 'decrypt' command\nfollowed by the filename and password(if you have it).\n")
 say(1, "That command brings up the jumbled keyword.\nThe letters in the keyword are shifted by a certain number.\n")
 
-raw_input("Press Enter to Continue")
+input("Press Enter to Continue")
 
 say(1, "For example 'a' shifted by -1 will be 'z'.\nAnd if 'a' is shifted by 1 it will be 'b'.\nIts your job to find out the decryption code\n(the number of letters the keyword is shifted by.)\n")
 
-raw_input("Press Enter to Continue")
+input("Press Enter to Continue")
 
 say(1, "You can use the keyword 'scan' followed the name of the computer to view its specs.\n")
 say(1, "In this format to reveal the jumbled word: decrypt (filename)\n")
