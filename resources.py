@@ -5,9 +5,9 @@ import random
 def Haxor_Gurl(file_name):
 	if file_name:
 		if file_name in Constants.Haxor_Gurl_Responses:
-			print "HaxorGurl says: ", Constants.Haxor_Gurl_Responses[file_name]
+			print("HaxorGurl says: ", Constants.Haxor_Gurl_Responses[file_name])
 		else:
-			print "HaxorGurl says: ", Constants.Haxor_Random_Responses[random.randint(0, 4)]
+			print("HaxorGurl says: ", Constants.Haxor_Random_Responses[random.randint(0, 4)])
 			
 
 def protect_password(password, hints):
@@ -24,7 +24,7 @@ def get_guess():
 	while True:
 		guess = raw_input("Guess:> ")
 		if len(guess) != 1:
-			print "Only one character guesses accepted."
+			print("Only one character guesses accepted.")
 		else:
 			return guess
 
@@ -45,28 +45,28 @@ class Computer(object):
 	def crack(self):
 		current_tries = 0
 		incorrect_guesses = []
-		print "Starting cracking program..."
+		print("Starting cracking program...")
 		time.sleep(2)
 		while(current_tries != self.tries):
-			print "Password:", self.protected_password
-			print "Tries left: %s" % (self.tries - current_tries)
+			print("Password:", self.protected_password)
+			print("Tries left: %s" % (self.tries - current_tries))
 			if incorrect_guesses:
-				print "Guesses:", ''.join(incorrect_guesses)
+				print("Guesses:", ''.join(incorrect_guesses))
 			guess = get_guess() 
 			if guess in self.password:
 				self.hints += guess
 				self.protected_password = protect_password(self.password, self.hints)
 				if not '_' in self.protected_password:
-					print "The password for %s is %s" % (self.name, self.password)
+					print("The password for %s is %s" % (self.name, self.password))
 					return True
 			elif guess in incorrect_guesses:
-				print "Already attempted that character."
+				print("Already attempted that character.")
 				time.sleep(1)
 				continue
 			else:
 				current_tries = current_tries + 1
 				incorrect_guesses.append(guess)
-		print "Too many incorrect guesses, reseting..."
+		print("Too many incorrect guesses, reseting...")
 		return False
 		
 def encrypt(text, shift = 1):

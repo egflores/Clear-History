@@ -34,20 +34,20 @@ def random_line():
 	
 def fill_screen():
 	for i in range(10000):
-		print random_line()
+		print(random_line())
 	
 # This function displays the the files to the user
 def ls():
 	if current_computer.files:
-		print Constants.file_header
+		print(Constants.file_header)
 		for file in current_computer.files:
 			if current_computer.files[file].encrypted:
-				print file, "(encrypted)"
+				print(file, "(encrypted)")
 			else:
-				print file
-		print "\n"
+				print(file)
+		print("\n")
 	else:
-		print "No files."
+		print("No files.")
 	
 # This functions displays the text of a file if not encrypted
 def cat(file_name = None):
@@ -55,13 +55,13 @@ def cat(file_name = None):
 		if file_name in current_computer.files:
 			file = current_computer.files[file_name]
 			if file.encrypted != True:
-				print file.text
+				print(file.text)
 			else:
-				print "File is encrypted, cannot display content."
+				print("File is encrypted, cannot display content.")
 		else:
-			print "%s does not exist." % file_name
+			print("%s does not exist." % file_name)
 	else:
-		print "Please enter name of file you wish to open."
+		print("Please enter name of file you wish to open.")
 
 def connect(name = None):
 	if name != "":
@@ -69,34 +69,34 @@ def connect(name = None):
 			if computer_list[name].protected == False:
 				global current_computer
 				current_computer = computer_list[name]
-				print "Connecting to %s..." % current_computer.name
+				print("Connecting to %s..." % current_computer.name)
 				time.sleep(2)
-				print "Connected to %s." % current_computer.name
+				print("Connected to %s." % current_computer.name)
 			else:
-				print name, "is password protected, cannot connect."
+				print(name, "is password protected, cannot connect.")
 		else:
-			print name, "does not exist or is not connected."
+			print(name,"does not exist or is not connected.")
 	else:
-		print "No address given, try again.."
+		print("No address given, try again..")
 	
 def disconnect():
 	global current_computer
 	if current_computer == Home_Computer:
-		print "Can't disconnect from home computer."
+		print("Can't disconnect from home computer.")
 		return
 	current_computer = Home_Computer
-	print "Disconnecting..."
+	print("Disconnecting...")
 	time.sleep(2)
-	print "Disconnected."
+	print("Disconnected.")
 
 def scan(computer_name = None):
 	if computer_name:
 		if computer_name in computer_list:
-			print computer_list[computer_name].specs
+			print(computer_list[computer_name].specs)
 		else:
-			print computer_name, "does not exist or is not connected."
+			print(computer_name, "does not exist or is not connected.")
 	else:
-		print "Enter name of computer you wish to scan."
+		print("Enter name of computer you wish to scan.")
 
 def crack(computer_name = None, password = None):
 	if computer_name:
@@ -105,21 +105,21 @@ def crack(computer_name = None, password = None):
 				if password:
 					if computer_list[computer_name].password == password:
 						computer_list[computer_name].protected = False
-						print "Access granted, you can now connect."
+						print("Access granted, you can now connect.")
 					else:
-						print "Access denied."
+						print("Access denied.")
 				else:
 					global success_flag
 					success_flag = computer_list[computer_name].crack()
 					if success_flag == True:
 						computer_list[computer_name].protected = False
-						print "Access granted, you can now connect."
+						print("Access granted, you can now connect.")
 			else:
-				print computer_name, "does not need to be cracked."
+				print(computer_name, "does not need to be cracked.")
 		else:
-			print computer_name, "does not exist or is not connected."
+			print(computer_name, "does not exist or is not connected.")
 	else:
-		print "Please enter name of computer you wish to crack."
+		print("Please enter name of computer you wish to crack.")
 
 def decrypt(file_name = None, password = None):
 	if file_name:
@@ -128,54 +128,54 @@ def decrypt(file_name = None, password = None):
 				if password:
 					if current_computer.files[file_name].password == password:
 						current_computer.files[file_name].encrypted = False
-						print file_name, "decrypted, you can now access content"
+						print(file_name, "decrypted, you can now access content")
 				else:
-					print "Running decrypter..."
+					print("Running decrypter...")
 					time.sleep(1)
-					print "Displaying encryption keyword:", current_computer.files[file_name].encrypted_password
+					print("Displaying encryption keyword:", current_computer.files[file_name].encrypted_password)
 			else:
-				print file_name, "is not encrypted."
+				print(file_name, "is not encrypted.")
 		else:
-			print file_name, "does not exist."
+			print(file_name, "does not exist.")
 	else:
-		print "Enter filename."
+		print("Enter filename.")
 	
 def download(file_name = None):
 	if file_name:
 		if file_name in current_computer.files:
-			print "Downloading %s..." % file_name
+			print("Downloading %s..." % file_name)
 			Home_Computer.files[file_name] = current_computer.files[file_name]
 			del current_computer.files[file_name]
 			time.sleep(1)
-			print "Transfer complete."
+			print("Transfer complete.")
 		else:
-			print file_name, "is not a valid filename."
+			print(file_name, "is not a valid filename.")
 	else:
-		print "Enter name of file you wish to download."
+		print("Enter name of file you wish to download.")
 
 def upload(file_name = None, computer_name = None):
 	if file_name and computer_name:
 		if file_name in Home_Computer.files:
 			if computer_name in computer_list:
 				if computer_list[computer_name].protected == False:
-					print "Transfering %s to %s..." % (file_name, computer_name)
+					print("Transfering %s to %s..." % (file_name, computer_name))
 					computer_list[computer_name].files[file_name] = Home_Computer.files[file_name]
 					del Home_Computer.files[file_name]
 					time.sleep(1)
-					print "Transfer complete."
+					print("Transfer complete.")
 				else:
-					print "Cannot upload file, %s is protected." % computer_name
+					print("Cannot upload file, %s is protected." % computer_name)
 			elif computer_name == "haxorgurl":
 				Haxor_Gurl(file_name)
 			else:
-				print computer_name, "does not exist or is not connected."
+				print(computer_name, "does not exist or is not connected.")
 		else:
-			print file_name, "is not a valid filename"
+			print(file_name, "is not a valid filename")
 	else:
-		print "Enter valid file and computer name."
+		print("Enter valid file and computer name.")
 	
 def help():
-	print Constants.help
+	print(Constants.help)
 	
 # Load the command list into the command_list dictionary
 def load_commands():
@@ -208,7 +208,7 @@ def load_stage_3_2():
 	
 def cmd():
 	while True:
-		command = raw_input(current_computer.prompt).split()
+		command = input(current_computer.prompt).split()
 		if command:
 			if command[0] in command_list:
 				if len(command) == 1:
@@ -222,21 +222,21 @@ def cmd():
 					try:
 						command_list[command[0]](command[1])
 					except:
-						print "Too many arguments given"
+						print("Too many arguments given")
 					else:
 						return command
 				elif len(command) == 3:
 					try:
 						command_list[command[0]](command[1], command[2])
 					except:
-						print "Too many arguments given."
+						print("Too many arguments given.")
 					else:
 						return command
 				else:
-					print "Too many parameters, re-enter command."
+					print("Too many parameters, re-enter command.")
 					return command
 			else:
-				print command[0], "is not a valid command"
+				print(command[0], "is not a valid command")
 				return command
 		else:
 			return None
